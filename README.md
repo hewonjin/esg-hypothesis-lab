@@ -10,12 +10,13 @@
 
 ## 진행 중인 가설 (2026-08 기준)
 
-| 담당 | 가설 | 상태 |
+| 담당(GitHub) | 가설 | 상태 |
 |---|---|---|
-| 호연 | ESG 지수/펀드가 실제 환경 개선에 인과관계를 갖는가 | 탐색 중 |
-| 민주 | E·S·G 개별 점수가 통합등급 산출에 미치는 영향(가중치) | 리서치 중 |
-| 혜원 | ESG펀드 보유기업의 신용등급 강등이 펀드 성과에 영향을 미치는가 | 방법론 확립 중 |
-| 지예,원준 | 펀드 내 상관관계가 큰 변수 탐색 | 방향 설정 중 |
+| hyc6028 | ESG 지수/펀드가 실제 환경 개선에 인과관계를 갖는가 | 탐색 중 |
+| MinjuKim22 | E·S·G 개별 점수가 통합등급 산출에 미치는 영향(가중치) | 리서치 중 |
+| hewonjin | ESG펀드 보유기업의 신용등급 강등이 펀드 성과에 영향을 미치는가 | 방법론 확립, 데이터 검증 중 |
+| FastSloth226 | 펀드 내 상관관계가 큰 변수 탐색 | 방향 설정 중 |
+| jiye1211 | 미정 | 브레인스토밍 리스트에서 선택 예정 |
 
 각 가설의 상세 배경·검증 결과·후속 과제는 `hypotheses/` 하위 폴더의 README를 참고하세요.
 
@@ -28,14 +29,16 @@
 │   └── analyze_divergence.py   # 이벤트 스터디(대조군 비교, z-score) 공용 로직
 │
 ├── hypotheses/
-│   ├── 01_esg_fund_performance/    # 혜원 — ESG펀드 성과 영향
+│   ├── 01_esg_fund_performance/    # ESG펀드 성과 영향 hewonjin
 │   │   ├── README.md               # 가설, 데이터, 검증 결과, 후속과제
 │   │   └── analysis.ipynb
-│   ├── 02_esg_weight/               # 민주 — E·S·G 가중치
+│   ├── 02_esg_weight/               # E·S·G 가중치 (MinjuKim22)
 │   │   └── README.md
-│   ├── 03_esg_env_impact/           # 호연 — 환경 개선 인과관계
+│   ├── 03_esg_env_impact/           # 환경 개선 인과관계 (hyc6028)
 │   │   └── README.md
-│   └── 04_fund_correlation/         # 지예,원준 — 펀드 내 상관변수
+│   ├── 04_fund_correlation/         # 펀드 내 상관변수 (FastSloth226)
+│   │   └── README.md
+│   └── 05_open/                     # 미정 (jiye1211) — 가설 확정되면 폴더명 변경
 │       └── README.md
 │
 ├── data/                        # 원본 데이터는 커밋하지 않음 (.gitignore 처리)

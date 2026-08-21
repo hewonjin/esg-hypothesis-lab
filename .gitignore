@@ -1,61 +1,9 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-dist/
-*.egg-info/
-.eggs/
-
-# 가상환경
-venv/
-env/
-.venv/
-ENV/
-
-# Jupyter
-.ipynb_checkpoints/
-*.ipynb_checkpoints
-
-# 환경 변수 / 시크릿
 .env
-.env.local
-*.pem
-*.key
-config/secrets.yaml
-
-# 데이터 (용량 크고 민감정보 포함 가능 - git 추적 제외)
-data/raw/*
-data/interim/*
-data/processed/*
-!data/raw/.gitkeep
-!data/interim/.gitkeep
-!data/processed/.gitkeep
-
-# 모델 아티팩트
-models/*
-!models/.gitkeep
-*.pkl
-*.joblib
-*.h5
-*.pt
-*.onnx
-
-# 로그 / 캐시
-logs/
-*.log
-.cache/
-.pytest_cache/
-.mypy_cache/
-
-# IDE
-.vscode/
-.idea/
-*.swp
+*.env
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+data/*.csv
+data/*.xlsx
+!data/.gitkeep
 .DS_Store
-
-# 실험 관리 도구 (사용 시)
-mlruns/
-wandb/

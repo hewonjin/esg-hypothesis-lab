@@ -15,7 +15,7 @@
 | 호연 | ESG 지수/펀드가 실제 환경 개선에 인과관계를 갖는가 | 탐색 중 |
 | 민주 | E·S·G 개별 점수가 통합등급 산출에 미치는 영향(가중치) | 리서치 중 |
 | 혜원 | ESG펀드 보유기업의 신용등급 강등이 펀드 성과에 영향을 미치는가 | 방법론 확립 중 |
-| 지예 | 펀드 내 상관관계가 큰 변수 탐색 | 방향 설정 중 |
+| 지예,원준 | 펀드 내 상관관계가 큰 변수 탐색 | 방향 설정 중 |
 
 각 가설의 상세 배경·검증 결과·후속 과제는 `hypotheses/` 하위 폴더의 README를 참고하세요.
 
@@ -28,14 +28,14 @@
 │   └── analyze_divergence.py   # 이벤트 스터디(대조군 비교, z-score) 공용 로직
 │
 ├── hypotheses/
-│   ├── 01_esg_fund_performance/    # 팀원3 — ESG펀드 성과 영향
+│   ├── 01_esg_fund_performance/    # 혜원 — ESG펀드 성과 영향
 │   │   ├── README.md               # 가설, 데이터, 검증 결과, 후속과제
 │   │   └── analysis.ipynb
-│   ├── 02_esg_weight/               # 팀원2 — E·S·G 가중치
+│   ├── 02_esg_weight/               # 민주 — E·S·G 가중치
 │   │   └── README.md
-│   ├── 03_esg_env_impact/           # 팀원1 — 환경 개선 인과관계
+│   ├── 03_esg_env_impact/           # 호연 — 환경 개선 인과관계
 │   │   └── README.md
-│   └── 04_fund_correlation/         # 팀원4 — 펀드 내 상관변수
+│   └── 04_fund_correlation/         # 지예,원준 — 펀드 내 상관변수
 │       └── README.md
 │
 ├── data/                        # 원본 데이터는 커밋하지 않음 (.gitignore 처리)

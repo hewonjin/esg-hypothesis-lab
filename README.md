@@ -1,78 +1,74 @@
-# B2B 가맹점 정산리스크 스코어링 (b2b-settlement-risk-scoring)
+# ESG Hypothesis Lab (가설 탐색 저장소)
 
-B2B 가맹점을 대상으로 정산 시점의 리스크(미정산, 부도, 이상거래 등)를 사전에 예측하고 점수화하는 프로젝트입니다.
+> ⚠️ 이 저장소는 **주제 확정 전 가설 탐색 단계**의 저장소입니다.
+> 각자 검증하고 있는 가설과 EDA 코드를 여기 모아두고, 결과를 종합해 최종 프로젝트 주제를 확정합니다.
 
-## 프로젝트 개요
+## 배경
 
-- **목표**: 가맹점별 정산 관련 리스크를 스코어링하여 사전 관리 및 대응 체계를 마련
-- **주요 대상**: B2B 가맹점 거래/정산 데이터
-- **핵심 산출물**: 리스크 스코어 모델, 대시보드/리포트, API(선택)
+기존 "B2B 가맹점 정산 리스크 스코어링" 주제에서 데이터 접근성 문제로 방향을 전환,
+현재는 ESG 데이터와 신용/시장 리스크 간의 관계를 여러 각도에서 검증하며 최종 주제를 좁혀가는 중입니다.
 
-## 팀원
+## 진행 중인 가설 (2026-08 기준)
 
-| 이름 | 역할 | GitHub |
-|------|------|--------|
-| | | |
-| | | |
-| | | |
+| 담당 | 가설 | 상태 |
+|---|---|---|
+| 호연 | ESG 지수/펀드가 실제 환경 개선에 인과관계를 갖는가 | 탐색 중 |
+| 민주 | E·S·G 개별 점수가 통합등급 산출에 미치는 영향(가중치) | 리서치 중 |
+| 혜원 | ESG펀드 보유기업의 신용등급 강등이 펀드 성과에 영향을 미치는가 | 방법론 확립 중 |
+| 지예 | 펀드 내 상관관계가 큰 변수 탐색 | 방향 설정 중 |
 
-## 프로젝트 구조
+각 가설의 상세 배경·검증 결과·후속 과제는 `hypotheses/` 하위 폴더의 README를 참고하세요.
+
+## 폴더 구조
 
 ```
-b2b-settlement-risk-scoring/
-├── data/
-│   ├── raw/              # 원본 데이터 (git 추적 제외)
-│   ├── interim/          # 전처리 중간 산출물
-│   └── processed/        # 모델 학습용 최종 데이터
-├── notebooks/            # EDA 및 실험용 Jupyter 노트북
-├── src/
-│   ├── data/              # 데이터 수집·전처리 스크립트
-│   ├── features/          # 피처 엔지니어링
-│   ├── models/            # 모델 학습·평가·추론
-│   └── utils/             # 공통 유틸 함수
-├── models/                # 학습된 모델 아티팩트 (git 추적 제외)
-├── tests/                 # 단위 테스트
-├── reports/               # 분석 리포트, 시각화 결과물
-├── requirements.txt        # Python 의존성
-├── .gitignore
-└── README.md
+├── common/                     # 여러 가설에서 공용으로 쓰는 재사용 코드
+│   ├── data_pipeline.py        # KRX·DART·공공데이터포털 수집 파이프라인
+│   ├── dart_corpcode_lookup.py # DART corp_code 조회 헬퍼
+│   └── analyze_divergence.py   # 이벤트 스터디(대조군 비교, z-score) 공용 로직
+│
+├── hypotheses/
+│   ├── 01_esg_fund_performance/    # 팀원3 — ESG펀드 성과 영향
+│   │   ├── README.md               # 가설, 데이터, 검증 결과, 후속과제
+│   │   └── analysis.ipynb
+│   ├── 02_esg_weight/               # 팀원2 — E·S·G 가중치
+│   │   └── README.md
+│   ├── 03_esg_env_impact/           # 팀원1 — 환경 개선 인과관계
+│   │   └── README.md
+│   └── 04_fund_correlation/         # 팀원4 — 펀드 내 상관변수
+│       └── README.md
+│
+├── data/                        # 원본 데이터는 커밋하지 않음 (.gitignore 처리)
+│   └── .gitkeep
+│
+├── requirements.txt
+└── README.md                    # 이 파일
 ```
 
-## 개발 환경 설정
+## 가설별 결과 제출 형식 (팀 규칙)
+
+각 가설 폴더의 README.md는 반드시 아래 3가지를 포함합니다:
+
+1. **가설**: 무엇을 검증하려 했는가
+2. **검증 결과**: 결과가 나왔다면 결과, 안 나왔다면 왜 안 나왔는지(데이터 부재/접근성 문제 등)
+3. **후속 연구**: 다음에 보완하거나 확장하고 싶은 부분
+
+## 데이터 접근성 현황
+
+| 데이터 | 출처 | 상태 |
+|---|---|---|
+| 채권 거래량·수익률 | KRX Open API (`bnd_bydd_trd`) | ✅ 확인 완료 |
+| 재무제표·주요사항보고서 | DART Open API | ✅ 확인 완료 |
+| 단기금융증권 발행정보 | 공공데이터포털 | ✅ 확인 완료 |
+| 채권 등급별 평균수익률 | KOFIA BIS | ✅ 확인 완료 |
+| ESG 등급 | KCGS | ✅ 전체기업 일괄 다운로드 가능 |
+| 펀드 자산구성내역 | FUND DART | ⏳ 확인 중 |
+| 펀드 기준가(NAV) | FUND DART / 제로인 / 에프앤가이드 | ⏳ 확인 중 |
+
+## 개발 환경
 
 ```bash
-# 저장소 클론
-git clone https://github.com/<org-or-user>/b2b-settlement-risk-scoring.git
-cd b2b-settlement-risk-scoring
-
-# 가상환경 생성 및 활성화
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-
-# 의존성 설치
 pip install -r requirements.txt
 ```
 
-## 브랜치 전략
-
-- `main`: 배포/최종 안정 버전
-- `develop`: 통합 개발 브랜치
-- `feature/기능명`: 개별 기능 개발 브랜치
-- 작업 완료 후 `develop`으로 Pull Request 생성 → 리뷰 후 병합
-
-## 커밋 컨벤션
-
-```
-feat: 새로운 기능 추가
-fix: 버그 수정
-data: 데이터 관련 작업
-model: 모델 학습/튜닝 관련
-docs: 문서 수정
-refactor: 코드 리팩토링
-test: 테스트 코드 추가/수정
-chore: 빌드, 설정 등 기타 변경
-```
-
-## 라이선스
-
-TBD
+`common/` 스크립트를 쓰려면 각자 발급받은 API 키가 필요합니다. `.env.example`을 참고해 `.env`를 만들고 채워 넣으세요 (API 키는 절대 커밋하지 않습니다 — `.gitignore`에 포함).
